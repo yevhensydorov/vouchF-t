@@ -16,7 +16,7 @@ describe("Header Component", () => {
     expect(shallow(<Header />).find(".logo").length).toEqual(1);
   });
 
-  it("render a child Navbar component", () => {
+  it("should render a child Navbar component", () => {
     const wrapper = shallow(<Header />);
     expect(wrapper.contains(<Navbar />)).toBe(true);
   });
