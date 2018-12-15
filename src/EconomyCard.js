@@ -4,7 +4,7 @@ import "./EconomyCard.css";
 class EconomyCard extends Component {
   render() {
     return (
-      <div>
+      <div className="card-container">
         <p>I'm economy Card</p>
       </div>
     );

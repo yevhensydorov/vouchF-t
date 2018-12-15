@@ -4,7 +4,7 @@ import "./UserMoneyCard.css";
 class UserMoneyCard extends Component {
   render() {
     return (
-      <div>
+      <div className="card-container">
         <p>I'm user money Card</p>
       </div>
     );
