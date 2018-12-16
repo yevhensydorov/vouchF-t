@@ -9,10 +9,15 @@ class UserMoneyCard extends Component {
     this.state = {
       data: []
     };
+
+    this.getData = this.getData.bind(this);
   }
+
   componentDidMount() {
     this.getData();
+    this.props.getPropsFromChild(userData.expenditures);
   }
+
   getData() {
     this.setState({
       data: [...this.state.data, userData]
