@@ -9,6 +9,8 @@ class EconomyCard extends Component {
       userMoney: [],
       loaded: false
     };
+
+    this.handleChange = this.handleChange.bind(this);
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -19,12 +21,25 @@ class EconomyCard extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     if (prevProps.userMoney !== this.props.userMoney) {
-      this.setState({ userMoney: this.props.userMoney, loaded: true });
+      this.setState({
+        userMoney: [...this.state.userMoney, this.props.userMoney],
+        loaded: true
+      });
     }
   }
 
   handleChange(event) {
-    console.log(event.target.value);
+    let spends = this.state.userMoney;
+    const value = event.target.value;
+    const name = event.target.name;
+    spends.forEach(item => {
+      if (item.name === name) {
+        item.amount = value;
+        this.setState({
+          userMoney: [...this.state.userMoney, spends]
+        });
+      }
+    });
   }
 
   render() {
@@ -34,19 +49,22 @@ class EconomyCard extends Component {
       spendingItems = userSpending.map((spendingItem, index) => {
         return (
           <div className="slidecontainer" key={index}>
-            <label htmlFor={spendingItem.name.trim()}>
-              {spendingItem.name}
-            </label>
-            <input
-              type="range"
-              min="1"
-              max={spendingItem.amount}
-              value={spendingItem.amount}
-              className="slider"
-              id="myRange"
-              onChange={this.handleChange}
-              name={spendingItem.name.trim()}
-            />
+            <div className="input-container">
+              <label htmlFor={spendingItem.name}>{spendingItem.name}</label>
+              <input
+                type="range"
+                min="0"
+                max={spendingItem.amount}
+                value={spendingItem.amount}
+                className="slider"
+                id={index}
+                onChange={this.handleChange}
+                name={spendingItem.name}
+              />
+            </div>
+            <div className="amount-container">
+              <span>£{spendingItem.amount}</span>
+            </div>
           </div>
         );
       });
@@ -61,6 +79,21 @@ class EconomyCard extends Component {
           improve!
         </p>
         {spendingItems}
+        <p className="saving-amount">This means you're saving £ per month!</p>
+        <a href="https://google.com" target="_blank" className="button-economy">
+          Find ways to save
+        </a>
+        <ul className="review-list">
+          <li>
+            <p className="review-question">Was this helpful?</p>
+          </li>
+          <li className="review-icon">
+            <a href="/">👍</a>
+          </li>
+          <li className="review-icon">
+            <a href="/">👎</a>
+          </li>
+        </ul>
       </article>
     );
   }

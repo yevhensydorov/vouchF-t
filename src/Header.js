@@ -9,7 +9,7 @@ const Header = () => {
         Hatch
       </a>
       <Navbar />
-      <button className="logout-button">Log Out</button>
+      <button className="button">Log Out</button>
     </header>
   );
 };
