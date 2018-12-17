@@ -1,6 +1,7 @@
 import React from "react";
 import { shallow } from "enzyme";
 import EconomyCard from "../EconomyCard";
+import CardHeader from "../CardHeader";
 
 describe("EconomyCard component", () => {
   it("should render without throwing an error", () => {
@@ -12,6 +13,7 @@ describe("EconomyCard component", () => {
   });
 
   it("should render a child CardHeader component", () => {
-    console.log("TO DO!!!");
+    const wrapper = shallow(<EconomyCard />);
+    expect(wrapper.find("CardHeader").exists()).toBeTruthy();
   });
 });

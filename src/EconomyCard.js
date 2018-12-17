@@ -66,7 +66,6 @@ class EconomyCard extends Component {
   }
 
   render() {
-    console.log(this.state.value);
     let userSpending, spendingItems;
     if (this.state.loaded) {
       userSpending = this.state.userMoney;
