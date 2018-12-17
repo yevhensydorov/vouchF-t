@@ -7,10 +7,13 @@ class EconomyCard extends Component {
     super(props);
     this.state = {
       userMoney: [],
-      loaded: false
+      loaded: false,
+      likeMessageDisplay: false,
+      dislikeMessageDisplay: false
     };
 
     this.handleChange = this.handleChange.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -40,6 +43,19 @@ class EconomyCard extends Component {
         });
       }
     });
+  }
+
+  handleClick(event) {
+    event.preventDefault();
+    if (event.target.classList[0] === "like-btn") {
+      this.setState({
+        likeMessageDisplay: true
+      });
+    } else if (event.target.classList[0] === "dislike-btn") {
+      this.setState({
+        dislikeMessageDisplay: true
+      });
+    }
   }
 
   render() {
@@ -80,7 +96,12 @@ class EconomyCard extends Component {
         </p>
         {spendingItems}
         <p className="saving-amount">This means you're saving £ per month!</p>
-        <a href="https://google.com" target="_blank" className="button-economy">
+        <a
+          href="https://google.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="button-economy"
+        >
           Find ways to save
         </a>
         <ul className="review-list">
@@ -88,10 +109,32 @@ class EconomyCard extends Component {
             <p className="review-question">Was this helpful?</p>
           </li>
           <li className="review-icon">
-            <a href="/">👍</a>
+            {this.state.likeMessageDisplay ? (
+              <p className="review-message">Thank you for your time!</p>
+            ) : (
+              <a href="/" onClick={this.handleClick}>
+                <span className="like-btn" aria-label="Like-emoji" role="img">
+                  👍
+                </span>
+              </a>
+            )}
           </li>
           <li className="review-icon">
-            <a href="/">👎</a>
+            {this.state.dislikeMessageDisplay ? (
+              <p className="review-message">
+                Sorry for your experience! We will contact you soon!
+              </p>
+            ) : (
+              <a href="/" onClick={this.handleClick}>
+                <span
+                  className="dislike-btn"
+                  aria-label="Dislike-emoji"
+                  role="img"
+                >
+                  👎
+                </span>
+              </a>
+            )}
           </li>
         </ul>
       </article>
