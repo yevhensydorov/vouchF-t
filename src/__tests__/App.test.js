@@ -14,11 +14,11 @@ describe("App Component", () => {
 
   it("should render a child Header component", () => {
     const wrapper = shallow(<App />);
-    expect(wrapper.contains(<Header />)).toBe(true);
+    expect(wrapper.find("Header").exists()).toBeTruthy();
   });
 
   it("should render a child Header component", () => {
     const wrapper = shallow(<App />);
-    expect(wrapper.contains(<Main />)).toBe(true);
+    expect(wrapper.find("Main").exists()).toBeTruthy();
   });
 });
