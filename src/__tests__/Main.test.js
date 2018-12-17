@@ -14,12 +14,18 @@ describe("Main Component", () => {
   });
 
   it("should render a child UserMoneyCard component", () => {
-    const wrapper = shallow(<Main />);
-    expect(wrapper.contains(<UserMoneyCard />)).toBe(true);
+    expect(
+      shallow(<Main />)
+        .find("UserMoneyCard")
+        .exists()
+    ).toBeTruthy();
   });
 
   it("should render a child EconomyCard component", () => {
-    const wrapper = shallow(<Main />);
-    expect(wrapper.contains(<EconomyCard />)).toBe(true);
+    expect(
+      shallow(<Main />)
+        .find("EconomyCard")
+        .exists()
+    ).toBeTruthy();
   });
 });
