@@ -5,3 +5,7 @@
 .card-content .income-form {
   margin: 0.3rem 0;
 }
+
+.card-content .spend-item {
+  margin-bottom: 1rem;
+}

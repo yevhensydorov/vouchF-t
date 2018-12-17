@@ -65,32 +65,34 @@ class UserMoneyCard extends Component {
       expendituresForm = expendituresData.map((spendingItem, index) => {
         return (
           <form key={index}>
-            <div>
-              <label htmlFor="mortgage-spending">{spendingItem.name}</label>
-              <input
-                type="text"
-                name="mortgage-spending"
-                id="mortgage-spending"
-                value={spendingItem.amount}
-              />
-            </div>
-            <div>
-              <label htmlFor="mortgage-spending">From age</label>
-              <input
-                type="text"
-                name="from-age"
-                id="from-age"
-                value={spendingItem.from_age}
-              />
-            </div>
-            <div>
-              <label htmlFor="mortgage-spending">To age</label>
-              <input
-                type="text"
-                name="to-age"
-                id="to-age"
-                value={spendingItem.to_age}
-              />
+            <div className="spend-item">
+              <div>
+                <label htmlFor="mortgage-spending">{spendingItem.name}</label>
+                <input
+                  type="text"
+                  name="mortgage-spending"
+                  id="mortgage-spending"
+                  value={spendingItem.amount}
+                />
+              </div>
+              <div>
+                <label htmlFor="mortgage-spending">From age</label>
+                <input
+                  type="text"
+                  name="from-age"
+                  id="from-age"
+                  value={spendingItem.from_age}
+                />
+              </div>
+              <div>
+                <label htmlFor="mortgage-spending">To age</label>
+                <input
+                  type="text"
+                  name="to-age"
+                  id="to-age"
+                  value={spendingItem.to_age}
+                />
+              </div>
             </div>
           </form>
         );
