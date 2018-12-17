@@ -90,55 +90,57 @@ class EconomyCard extends Component {
     return (
       <article className="card-container">
         <CardHeader title="spend less" />
-        <p className="action-message">
-          Try reducing your monthly spending to see how your forecast could
-          improve!
-        </p>
-        {spendingItems}
-        <p className="saving-amount">
-          This means you're saving £<span>{this.state.value}</span> per month!
-        </p>
-        <a
-          href="https://google.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="button-economy"
-        >
-          Find ways to save
-        </a>
-        <ul className="review-list">
-          <li>
-            <p className="review-question">Was this helpful?</p>
-          </li>
-          <li className="review-icon">
-            {this.state.likeMessageDisplay ? (
-              <p className="review-message">Thank you for your time!</p>
-            ) : (
-              <a href="/" onClick={this.handleClick}>
-                <span className="like-btn" aria-label="Like-emoji" role="img">
-                  👍
-                </span>
-              </a>
-            )}
-          </li>
-          <li className="review-icon">
-            {this.state.dislikeMessageDisplay ? (
-              <p className="review-message">
-                Sorry for your experience! We will contact you soon!
-              </p>
-            ) : (
-              <a href="/" onClick={this.handleClick}>
-                <span
-                  className="dislike-btn"
-                  aria-label="Dislike-emoji"
-                  role="img"
-                >
-                  👎
-                </span>
-              </a>
-            )}
-          </li>
-        </ul>
+        <div className="card-content">
+          <p className="action-message">
+            Try reducing your monthly spending to see how your forecast could
+            improve!
+          </p>
+          {spendingItems}
+          <p className="saving-amount">
+            This means you're saving £<span>{this.state.value}</span> per month!
+          </p>
+          <a
+            href="https://google.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="button-economy"
+          >
+            Find ways to save
+          </a>
+          <ul className="review-list">
+            <li>
+              <p className="review-question">Was this helpful?</p>
+            </li>
+            <li className="review-icon">
+              {this.state.likeMessageDisplay ? (
+                <p className="review-message">Thank you for your time!</p>
+              ) : (
+                <a href="/" onClick={this.handleClick}>
+                  <span className="like-btn" aria-label="Like-emoji" role="img">
+                    👍
+                  </span>
+                </a>
+              )}
+            </li>
+            <li className="review-icon">
+              {this.state.dislikeMessageDisplay ? (
+                <p className="review-message">
+                  Sorry for your experience! We will contact you soon!
+                </p>
+              ) : (
+                <a href="/" onClick={this.handleClick}>
+                  <span
+                    className="dislike-btn"
+                    aria-label="Dislike-emoji"
+                    role="img"
+                  >
+                    👎
+                  </span>
+                </a>
+              )}
+            </li>
+          </ul>
+        </div>
       </article>
     );
   }
