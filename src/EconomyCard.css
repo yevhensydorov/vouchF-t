@@ -6,8 +6,17 @@
 .slidecontainer {
   display: flex;
   justify-content: space-between;
-  width: 69%; /* Width of the outside container */
+  width: 100%;
   margin-bottom: 2rem;
+}
+
+.slidecontainer .slider-label {
+  width: 30%;
+  margin-right: 10%;
+}
+
+.slidecontainer .rc-slider {
+  width: 60%;
 }
 
 .slider {
