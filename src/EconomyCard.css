@@ -1,7 +1,12 @@
+.action-message {
+  margin-bottom: 2.1rem;
+}
+
 .slidecontainer {
   display: flex;
   justify-content: space-between;
   width: 69%; /* Width of the outside container */
+  margin-bottom: 2rem;
 }
 
 .slider {

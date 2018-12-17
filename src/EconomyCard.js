@@ -1,18 +1,23 @@
 import React, { Component } from "react";
+import Slider from "rc-slider";
+import "rc-slider/assets/index.css"; //Slider default styles
 import CardHeader from "./CardHeader";
 import "./EconomyCard.css";
+const createSliderWithTooltip = Slider.createSliderWithTooltip;
+const SliderWithTooltip = createSliderWithTooltip(Slider);
 
 class EconomyCard extends Component {
   constructor(props) {
     super(props);
     this.state = {
       userMoney: [],
+      min: 0,
       loaded: false,
       likeMessageDisplay: false,
-      dislikeMessageDisplay: false
+      dislikeMessageDisplay: false,
+      value: 0
     };
 
-    this.handleChange = this.handleChange.bind(this);
     this.handleClick = this.handleClick.bind(this);
   }
 
@@ -31,19 +36,21 @@ class EconomyCard extends Component {
     }
   }
 
-  handleChange(event) {
-    let spends = this.state.userMoney;
-    const value = event.target.value;
-    const name = event.target.name;
-    spends.forEach(item => {
-      if (item.name === name) {
-        item.amount = value;
-        this.setState({
-          userMoney: [...this.state.userMoney, spends]
-        });
-      }
+  onSliderChange = value => {
+    this.setState({
+      value: value
     });
-  }
+  };
+  onMinChange = e => {
+    this.setState({
+      min: +e.target.value || 0
+    });
+  };
+  onMaxChange = e => {
+    this.setState({
+      max: +e.target.value || 100
+    });
+  };
 
   handleClick(event) {
     event.preventDefault();
@@ -59,28 +66,22 @@ class EconomyCard extends Component {
   }
 
   render() {
+    console.log(this.state.value);
     let userSpending, spendingItems;
     if (this.state.loaded) {
       userSpending = this.state.userMoney;
       spendingItems = userSpending.map((spendingItem, index) => {
         return (
           <div className="slidecontainer" key={index}>
-            <div className="input-container">
-              <label htmlFor={spendingItem.name}>{spendingItem.name}</label>
-              <input
-                type="range"
-                min="0"
-                max={spendingItem.amount}
-                value={spendingItem.amount}
-                className="slider"
-                id={index}
-                onChange={this.handleChange}
-                name={spendingItem.name}
-              />
-            </div>
-            <div className="amount-container">
-              <span>£{spendingItem.amount}</span>
-            </div>
+            <div className="slider-label">{spendingItem.name}</div>
+            <SliderWithTooltip
+              defaultValue={spendingItem.amount}
+              min={this.state.min}
+              max={spendingItem.amount}
+              onChange={this.onSliderChange}
+              tipFormatter={value => `\£${value}`}
+              tipProps={{ visible: true }}
+            />
           </div>
         );
       });
@@ -95,7 +96,9 @@ class EconomyCard extends Component {
           improve!
         </p>
         {spendingItems}
-        <p className="saving-amount">This means you're saving £ per month!</p>
+        <p className="saving-amount">
+          This means you're saving £<span>{this.state.value}</span> per month!
+        </p>
         <a
           href="https://google.com"
           target="_blank"
