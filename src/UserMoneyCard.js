@@ -99,10 +99,12 @@ class UserMoneyCard extends Component {
     return (
       <article className="card-container">
         <CardHeader title="your income & spend" />
-        <h3>Annual income</h3>
-        <div>{incomeForm}</div>
-        <h3>Monthly spending</h3>
-        <div>{expendituresForm}</div>
+        <div className="card-content">
+          <h3>Annual income</h3>
+          <div className="income-form">{incomeForm}</div>
+          <h3>Monthly spending</h3>
+          <div className="income-form">{expendituresForm}</div>
+        </div>
       </article>
     );
   }

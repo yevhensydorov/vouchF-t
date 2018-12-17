@@ -1,0 +1,11 @@
+.card-content {
+  padding: 1rem;
+}
+
+.card-content h3 {
+  margin: 0;
+}
+
+.card-content .income-form {
+  margin: 0.3rem 0;
+}
